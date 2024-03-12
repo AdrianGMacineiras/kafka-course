@@ -18,12 +18,12 @@ public class Consumer {
     public static void main(String[] args) {
         log.info("Im a Kafka Consumer!");
 
-        String groupId = "my-java-application";
+        String groupId = "my-test-id";
         String topic = "demo_java";
 
         // Producer properties
         Properties properties = new Properties();
-        properties.setProperty("bootstrap.servers", "127.0.0.1:9092");
+        properties.setProperty("bootstrap.servers", "localhost:9092");
 
         // create consumer configs
         properties.setProperty("key.deserializer", StringDeserializer.class.getName());
@@ -35,7 +35,7 @@ public class Consumer {
         // none: si no hay un grupo de consumidores = fallamos, esto significa que tenemos que crear el grupo de
         // consumidores antes de lanzar la aplicación
         // earliest: lee desde el principio de mi topic
-        // latest: leer apartir de ahora, leer los nuevos mensajes apartir de ahora
+        // latest: leer a partir de ahora, leer los nuevos mensajes apartir de ahora
         properties.setProperty("auto.offset.reset","earliest");
 
         // create a consumer
